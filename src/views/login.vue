@@ -20,13 +20,12 @@ import { defineComponent, } from 'vue'
 import useLogin from '../hook/useLogin'
 export default defineComponent({
   setup() {
-    let {loginForm,loginRules,loginFormRef,submit,token} = useLogin()
+    let {loginForm,loginRules,loginFormRef,submit} = useLogin()
     return{
       loginForm,
       loginRules,
       loginFormRef,
       submit,
-      token
     }
   },
 })

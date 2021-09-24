@@ -1,11 +1,12 @@
 import {  reactive ,ref } from 'vue'
 import {login} from '../api/index'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import {setCookie} from '../utils/cookie'
 
 
 export default function (){
   const router = useRouter()
+  const route = useRoute()
   const token = ref('')
   let loginForm = reactive({
     account:'',
@@ -31,15 +32,17 @@ export default function (){
         }
         const res = await  login(paramsObj,headers)
         token.value = res.data.data.token
-        console.log('success')
-        setCookie('token',token.value,600)
-        router.push('/index')
+        setCookie('token',token.value,)
+        if(route.query.redirect){
+          router.push(route.query.redirect)
+        }else{
+          router.push('/index')
+        }
       }else{
         console.log('err')
       }
     })
   }
-
   return{
     loginForm,
     loginRules,

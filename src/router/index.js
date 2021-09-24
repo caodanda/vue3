@@ -47,7 +47,6 @@ const router =  createRouter({
 })
 
 let token = getCookie('token')
-console.log(token)
 router.beforeEach((to, from, next)=>{
   // 方法一
   if(to.matched.length === 0){
@@ -57,6 +56,7 @@ router.beforeEach((to, from, next)=>{
   if(to.meta.requiresAuth && !token){
     next({
       path:'/login',
+      // 登录后重定向到具体页面
       query: { redirect: to.fullPath }
     })
   }else{
