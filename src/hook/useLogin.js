@@ -34,6 +34,7 @@ export default function (){
         token.value = res.data.data.token
         setCookie('token',token.value,)
         if(route.query.redirect){
+          console.log(route.query.redirect)
           router.push(route.query.redirect)
         }else{
           router.push('/index')

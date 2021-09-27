@@ -6,25 +6,45 @@ const routes = [
   {
     path:'/',
     redirect:'/home',
-    component:()=>import('../views/home.vue'),
+    component:()=>import('../components/home.vue'),
   },
   {
     path:'/home',
     name:'home',
-    component:()=>import('../views/home.vue'),
+    component:()=>import('../components/home.vue'),
     meta: { requiresAuth: false }
   },
   {
     path:'/login',
     name:'login',
-    component:()=>import('../views/login.vue'),
+    component:()=>import('../components/login.vue'),
     meta: { requiresAuth: false }
   },
   {
     path:'/index',
     name:'index',
-    component:()=>import('../views/index.vue'),
-    meta: { requiresAuth: true }
+    component:()=>import('../components/index.vue'),
+    meta: { requiresAuth: true },
+    children:[
+      {
+        path:'/taskList',
+        name:'taskList',
+        component:()=>import('../views/taskList.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path:'/recordList',
+        name:'recordList',
+        component:()=>import('../views/recordList.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path:'/userList',
+        name:'userList',
+        component:()=>import('../views/userList.vue'),
+        meta: { requiresAuth: true },
+      },
+    ]
   },
   {
     path:'/404',

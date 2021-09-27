@@ -1,13 +1,13 @@
 <template>
   <div class="home-wrap">
-    <img src="../assets/img/1111.webp" alt="图片">
+    <img src="../assets/img/2222.png" alt="图片">
     <div class="verse">
       <p>少年易老学难成，</p>
       <p>一寸光阴不可轻。</p>
       <p>未觉池塘春草梦，</p>
       <p>阶前梧叶已秋声。</p>
     </div>
-    <p class="btn" @click="jumpLogin">点击查看>>></p>
+    <p class="btn" @click="jumpLogin">点击查看更多>>></p>
   </div> 
 </template>
 <script >
