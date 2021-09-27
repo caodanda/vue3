@@ -30,18 +30,30 @@ const routes = [
         path:'/taskList',
         name:'taskList',
         component:()=>import('../views/taskList.vue'),
-        meta: { requiresAuth: true },
+        meta: { 
+          requiresAuth: true,
+          keepAlive:true,
+        },
       },
       {
         path:'/recordList',
         name:'recordList',
         component:()=>import('../views/recordList.vue'),
-        meta: { requiresAuth: true },
+        meta: { 
+          requiresAuth: true,
+          keepAlive:true,
+        },
       },
       {
         path:'/userList',
         name:'userList',
         component:()=>import('../views/userList.vue'),
+        meta: { requiresAuth: true },
+      },
+      {
+        path:'/taskDetail',
+        name:'taskDetail',
+        component:()=>import('../views/taskDetail.vue'),
         meta: { requiresAuth: true },
       },
     ]

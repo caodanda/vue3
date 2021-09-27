@@ -1,5 +1,10 @@
 export function getCookie(name){
-  let cookieList = document.cookie === '' ? [] : document.cookie.split(';')
+  let cookie = document.cookie
+  let cookieList =[]
+  if(cookie){
+    cookieList = cookie.split(';') 
+  }
+
   if(cookieList.length){
     let index = cookieList.findIndex(item=>item.includes(name))
     return cookieList[index].split('=')[1]
@@ -7,7 +12,6 @@ export function getCookie(name){
     return ''
   }
 }
-
 
 export function setCookie(key,value,seconds){
   let expires = ''

@@ -1,14 +1,13 @@
 import axios from 'axios'
 import {ElMessage} from 'element-plus'
+import {getCookie} from '@/utils/cookie.js'
 
 const request = axios.create({
   baseURL:process.env.VUE_APP_URL,
   timeout:10000
 })
 
-
-const token = ''
-
+let token = getCookie('token')
 request.interceptors.request.use(config=>{
   if(token){
     config.headers.Authorization = token

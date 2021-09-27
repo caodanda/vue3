@@ -36,27 +36,33 @@
         <p class="expand" @click="handleMenuExpand">🧵</p>
       </el-header>
       <el-main class="content">
-        <router-view></router-view>
+        <router-view v-if="!keepAlive"></router-view>
+        <router-view v-slot="{ Component }" v-if="keepAlive">
+          <keep-alive>
+            <component :is="Component" />
+          </keep-alive>
+        </router-view>
       </el-main>
     </el-container>
   </el-container>
 </template>
-
 <script >
 import { defineComponent, ref } from 'vue'
-
+import { useRoute } from 'vue-router'
 
 export default defineComponent({
   setup() {
+    const route = useRoute()
     const isCollapse = ref(false)
     const handleMenuExpand = ()=>{
         isCollapse.value = !isCollapse.value
     }
+    let keepAlive = route.meta.keepAlive
     return{
       isCollapse,
       handleMenuExpand,
+      keepAlive,
     }
-    
   },
 })
 </script>
