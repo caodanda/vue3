@@ -33,11 +33,12 @@ export default defineComponent({
 }
 img{
   width: 100%;
+  height: 100vh;
   object-fit: cover;
 }
 .btn{
   position: absolute;
-  bottom: 300px;
+  bottom: 200px;
   left: 50%;
   transform: translateX(-50%);
   color: #fff;
@@ -47,8 +48,8 @@ img{
   cursor: pointer;
 }
 .btn:hover{
-  background: rgb(46, 199, 153);
-  border-color: rgb(46, 199, 153);
+  background: rgba(255,255,255,0.7);
+  color: #1b157b;
 }
 .verse{
   position: absolute;
