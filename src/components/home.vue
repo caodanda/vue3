@@ -2,6 +2,7 @@
   <div class="home-wrap">
     <img src="../assets/img/2222.png" alt="图片">
     <div class="verse">
+      <h4>《 劝学诗 》</h4>
       <p>少年易老学难成，</p>
       <p>一寸光阴不可轻。</p>
       <p>未觉池塘春草梦，</p>

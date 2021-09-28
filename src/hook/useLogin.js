@@ -2,9 +2,11 @@ import {  reactive ,ref } from 'vue'
 import {login} from '../api/index'
 import { useRouter, useRoute } from 'vue-router'
 import {setCookie} from '../utils/cookie'
+import { useStore } from 'vuex'
 
 
 export default function (){
+  const store = useStore()
   const router = useRouter()
   const route = useRoute()
   const token = ref('')
@@ -30,11 +32,12 @@ export default function (){
           mobile:loginForm.account,
           password:loginForm.pwd
         }
-        const res = await  login(paramsObj,headers)
+        const res = await login(paramsObj,headers)
         token.value = res.data.data.token
-        setCookie('token',token.value,)
+        setCookie('token',token.value)
+        await store.dispatch("handleUserInfo")
         if(route.query.redirect){
-          console.log(route.query.redirect)
+          console.log(token.value,route.query.redirect)
           router.push(route.query.redirect)
         }else{
           router.push('/index')

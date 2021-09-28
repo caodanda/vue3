@@ -34,6 +34,10 @@
     <el-container>
       <el-header class="header">
         <p class="expand" @click="handleMenuExpand">🧵</p>
+        <div class="user-data">
+          <img :src="userInfo.mediumAvatar" alt="">
+          <p>{{userInfo.nickname}}</p>
+        </div>
       </el-header>
       <el-main class="content">
         <router-view v-if="!keepAlive"></router-view>
@@ -49,19 +53,24 @@
 <script >
 import { defineComponent, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   setup() {
     const route = useRoute()
+    const store = useStore()
     const isCollapse = ref(false)
+    const userInfo = store.state.userInfo
     const handleMenuExpand = ()=>{
         isCollapse.value = !isCollapse.value
     }
     let keepAlive = route.meta.keepAlive
+    
     return{
       isCollapse,
       handleMenuExpand,
       keepAlive,
+      userInfo
     }
   },
 })
@@ -79,6 +88,20 @@ export default defineComponent({
   color: #131532;
   box-shadow: 1px 1px 10px #ccc;
   height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.user-data{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 100px;
+}
+.user-data img{
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
 }
 .expand{
   height: 100%;
